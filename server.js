@@ -111,7 +111,7 @@ app.use(async (err, req, res, next) => {
  * Start Server
  ************************/
 const port = process.env.PORT || 5500;
-const host = process.env.HOST || "localhost";
+const host = process.env.HOST || "0.0.0.0";
 
 app.listen(port, () => {
   console.log(`App running on http://${host}:${port}`);
