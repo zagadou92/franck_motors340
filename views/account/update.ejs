@@ -1,0 +1,70 @@
+<% if (title) { %>
+  <h1><%= title %></h1>
+<% } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<!-- Formulaire Mise à jour du compte -->
+<section>
+  <h2>Mise à jour du compte</h2>
+  <form action="/account/update/info" method="POST">
+    <input type="hidden" name="account_id" value="<%= account_id %>">
+
+    <label for="account_firstname">Prénom</label>
+    <input 
+      type="text" 
+      name="account_firstname" 
+      id="account_firstname" 
+      value="<%= account_firstname %>" 
+      required
+    >
+
+    <label for="account_lastname">Nom</label>
+    <input 
+      type="text" 
+      name="account_lastname" 
+      id="account_lastname" 
+      value="<%= account_lastname %>" 
+      required
+    >
+
+    <label for="account_email">Adresse e-mail</label>
+    <input 
+      type="email" 
+      name="account_email" 
+      id="account_email" 
+      value="<%= account_email %>" 
+      required
+    >
+
+    <button type="submit">Mettre à jour les informations</button>
+  </form>
+</section>
+
+<!-- Formulaire Changement de mot de passe -->
+<section>
+  <h2>Modifier le mot de passe</h2>
+  <p>Entrez un nouveau mot de passe (minimum 8 caractères, avec majuscules, minuscules et chiffres).</p>
+  <form action="/account/update/password" method="POST">
+    <input type="hidden" name="account_id" value="<%= account_id %>">
+
+    <label for="account_password">Nouveau mot de passe</label>
+    <input 
+      type="password" 
+      name="account_password" 
+      id="account_password" 
+      required
+      placeholder="Entrez un nouveau mot de passe"
+    >
+
+    <button type="submit">Mettre à jour le mot de passe</button>
+  </form>
+</section>
